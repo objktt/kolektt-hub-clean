@@ -20,7 +20,6 @@ interface ShadcnHeaderProps {
 }
 
 export function ShadcnHeader({ lang }: ShadcnHeaderProps) {
-  // VERSION: 2025-01-25-02:00 - FULL WIDTH FORCED
   const [isScrolled, setIsScrolled] = React.useState(false)
 
   React.useEffect(() => {
@@ -43,36 +42,21 @@ export function ShadcnHeader({ lang }: ShadcnHeaderProps) {
         }
       `}</style>
     <header
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        width: '100vw !important',
-        maxWidth: 'none !important',
-        margin: '0 !important',
-        padding: '0 !important'
-      }}
+      className="fixed top-4 inset-x-0 z-50"
     >
-      <div style={{
-        width: '100% !important',
-        maxWidth: 'none !important',
-        margin: '0 !important'
-      }}>
-        <div style={{
-          width: '100% !important',
-          maxWidth: 'none !important',
-          padding: '0 16px',
-          margin: '0 !important'
-        }}>
+      <div>
+        <div className="mx-auto w-[90%] px-4 sm:px-6 lg:px-8">
           <div className={cn(
-            "border transition-all duration-300 ease-in-out w-full",
+            "rounded-2xl border transition-all duration-300 ease-in-out",
             isScrolled 
-              ? "bg-white/[0.99] backdrop-blur-lg shadow-sm border-gray-200/40" 
-              : "bg-white/[0.99] backdrop-blur-md shadow-none border-gray-200/30"
+              ? "bg-white/[0.99] backdrop-blur-lg shadow-md border-gray-200/50" 
+              : "bg-white/[0.99] backdrop-blur-md shadow-sm border-gray-200/40"
           )}>
-            <div className="flex h-16 items-center justify-between px-6 w-full" style={{width: '100%', maxWidth: 'none'}}>
+            <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href={`/${lang}`} className="flex items-center space-x-2">
-            <span className="font-black text-2xl text-red-600 hover:text-gray-700 transition-colors" style={{backgroundColor: 'yellow'}}>
-              FULL WIDTH TEST
+            <span className="font-black text-2xl text-gray-900 hover:text-gray-700 transition-colors">
+              Kolektt
             </span>
           </Link>
 
