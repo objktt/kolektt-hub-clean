@@ -20,6 +20,7 @@ interface ShadcnHeaderProps {
 }
 
 export function ShadcnHeader({ lang }: ShadcnHeaderProps) {
+  // VERSION: 2025-01-25-02:00 - FULL WIDTH FORCED
   const [isScrolled, setIsScrolled] = React.useState(false)
 
   React.useEffect(() => {
@@ -42,21 +43,36 @@ export function ShadcnHeader({ lang }: ShadcnHeaderProps) {
         }
       `}</style>
     <header
-      className="fixed top-4 inset-x-0 z-50"
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        width: '100vw !important',
+        maxWidth: 'none !important',
+        margin: '0 !important',
+        padding: '0 !important'
+      }}
     >
-      <div className="p-[30px]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div style={{
+        width: '100% !important',
+        maxWidth: 'none !important',
+        margin: '0 !important'
+      }}>
+        <div style={{
+          width: '100% !important',
+          maxWidth: 'none !important',
+          padding: '0 16px',
+          margin: '0 !important'
+        }}>
           <div className={cn(
-            "rounded-2xl border transition-all duration-300 ease-in-out",
+            "border transition-all duration-300 ease-in-out w-full",
             isScrolled 
-              ? "bg-white/[0.99] backdrop-blur-lg shadow-xl border-gray-200/80" 
-              : "bg-white/[0.99] backdrop-blur-md shadow-lg border-gray-200/60"
+              ? "bg-white/[0.99] backdrop-blur-lg shadow-sm border-gray-200/40" 
+              : "bg-white/[0.99] backdrop-blur-md shadow-none border-gray-200/30"
           )}>
-            <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between px-6 w-full" style={{width: '100%', maxWidth: 'none'}}>
           {/* Logo */}
           <Link href={`/${lang}`} className="flex items-center space-x-2">
-            <span className="font-bold text-2xl text-gray-900 hover:text-gray-700 transition-colors">
-              Kolektt
+            <span className="font-black text-2xl text-red-600 hover:text-gray-700 transition-colors" style={{backgroundColor: 'yellow'}}>
+              FULL WIDTH TEST
             </span>
           </Link>
 
@@ -64,21 +80,21 @@ export function ShadcnHeader({ lang }: ShadcnHeaderProps) {
           <nav className="hidden md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
             <Link 
               href={`/${lang}/bpm-collect`}
-              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/80 px-3 py-2 text-sm font-medium rounded-md transition-all"
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/80 px-3 py-2 text-base font-bold rounded-md transition-all"
             >
               BPM Collect
             </Link>
             
             <Link 
               href={`/${lang}/hub`}
-              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/80 px-3 py-2 text-sm font-medium rounded-md transition-all"
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/80 px-3 py-2 text-base font-bold rounded-md transition-all"
             >
               Kolektt Hub
             </Link>
             
             <Link 
               href={`/${lang}/about`}
-              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/80 px-3 py-2 text-sm font-medium rounded-md transition-all"
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/80 px-3 py-2 text-base font-bold rounded-md transition-all"
             >
               About
             </Link>
