@@ -2,11 +2,10 @@ import { middleware } from "./utils/clerk";
 
 export const config = {
   matcher: [
-    "/((?!.*\\..*|_next).*)",
+    "/((?!_next|videos).*)",
     "/",
-    "/(api|trpc)(.*)",
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)"
+    "/(api|trpc)(.*)"
   ],
 };
 
-export default middleware
+export default middleware;

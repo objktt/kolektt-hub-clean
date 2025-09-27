@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
@@ -6,8 +8,32 @@ import ShutterButton from '~/components/ShutterButton';
 import { Iphone15Pro } from '~/components/ui/iphone-15-pro';
 import Testimonials from '~/components/ui/testimonials';
 import KolekttPricing from '~/components/ui/kolektt-pricing';
+import { CollectionBento } from '~/components/ui/collection-bento';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@saasfly/ui/accordion";
+import { motion } from 'framer-motion';
+import { 
+  Camera, 
+  Robot, 
+  Lightning, 
+  Target, 
+  ChartBar, 
+  MapPin,
+  CurrencyDollar, 
+  Trophy, 
+  Brain,
+  Globe,
+  Lock,
+  CheckCircle,
+  Money,
+  Sparkle
+} from 'phosphor-react';
 
-export default async function IndexPage({
+export default function IndexPage({
   params: { lang },
 }: {
   params: {
@@ -26,11 +52,13 @@ export default async function IndexPage({
           <div id="hero" className="px-[5%] z-10 relative">
             <div className="bg-white relative rounded-[40px] overflow-hidden min-h-[600px] flex items-center">
               <div id="hero-three" className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
-              <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+              
+              
+              <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8 py-32 lg:py-40 relative z-[2]">
                 <div className="flex justify-center">
                   <div className="w-full lg:w-2/3 text-center">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-9xl font-bold text-gray-900 leading-tight mb-6">All your collections begin here.</h1>
-                    <p className="text-xl md:text-2xl text-gray-700 mb-10">Piku delivered blazing performance, fast striking word soludtion</p>
+                    <p className="text-xl md:text-2xl text-gray-700 mb-12">Smart platform for analog collectors. Easily collect, manage, and trade your collection with camera-based automatic recognition, metadata collection, and investment insights.</p>
                     <div className="flex justify-center gap-3 mt-4">
                       <button type="button"
                         className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-lg tracking-wider border-none outline-none bg-black hover:bg-gray-800 active:bg-black">
@@ -95,118 +123,134 @@ export default async function IndexPage({
                   <div className="w-full lg:w-1/2">
                     <div className="text-center flex justify-center items-center relative">
                       <div className="w-[347px] relative">
-                        <Iphone15Pro src="https://placehold.co/900x1600?text=Camera+Recognition" />
+                        <Iphone15Pro videoSrc="/videos/bpm_demo.mp4" />
                         
                         {/* Feature Cards - Responsive Layout */}
                         
                         {/* Mobile: Zigzag Cards */}
                         <div className="lg:hidden">
                           {/* Top Left Card */}
-                          <div className="absolute left-[-40px] top-[10%]">
+                          <motion.div 
+                            className="absolute left-[-40px] top-[10%]"
+                            animate={{ y: [-8, 8, -8] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">📸</span>
-                                </div>
+                                <Camera size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">One-tap photo capture</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Simply point and shoot to start</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Top Right Card */}
-                          <div className="absolute right-[-40px] top-[25%]">
+                          <motion.div 
+                            className="absolute right-[-40px] top-[25%]"
+                            animate={{ y: [8, -8, 8] }}
+                            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">🤖</span>
-                                </div>
+                                <Robot size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">AI-powered recognition</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Advanced ML identifies albums</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Left Card */}
-                          <div className="absolute left-[-40px] top-[40%]">
+                          <motion.div 
+                            className="absolute left-[-40px] top-[40%]"
+                            animate={{ y: [-6, 10, -6] }}
+                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">⚡</span>
-                                </div>
+                                <Lightning size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Instant metadata retrieval</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Get all details in 2 seconds</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Right Card */}
-                          <div className="absolute right-[-40px] top-[55%]">
+                          <motion.div 
+                            className="absolute right-[-40px] top-[55%]"
+                            animate={{ y: [10, -6, 10] }}
+                            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">🎯</span>
-                                </div>
+                                <Target size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">95%+ accuracy rate</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Industry-leading precision</p>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
                         
                         {/* Desktop: Zigzag Cards */}
                         <div className="hidden lg:block">
                           {/* Top Left Card */}
-                          <div className="absolute left-[-130px] top-[10%]">
+                          <motion.div 
+                            className="absolute left-[-130px] top-[10%]"
+                            animate={{ y: [-10, 12, -10] }}
+                            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">📸</span>
-                                </div>
+                                <Camera size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">One-tap photo capture</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Simply point and shoot to start recognition</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Top Right Card */}
-                          <div className="absolute right-[-130px] top-[25%]">
+                          <motion.div 
+                            className="absolute right-[-130px] top-[25%]"
+                            animate={{ y: [12, -10, 12] }}
+                            transition={{ duration: 3.7, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">🤖</span>
-                                </div>
+                                <Robot size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">AI-powered recognition</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Advanced ML identifies any album instantly</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Left Card */}
-                          <div className="absolute left-[-130px] top-[40%]">
+                          <motion.div 
+                            className="absolute left-[-130px] top-[40%]"
+                            animate={{ y: [-8, 14, -8] }}
+                            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">⚡</span>
-                                </div>
+                                <Lightning size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Instant metadata retrieval</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Get all details in under 2 seconds</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Right Card */}
-                          <div className="absolute right-[-130px] top-[55%]">
+                          <motion.div 
+                            className="absolute right-[-130px] top-[55%]"
+                            animate={{ y: [14, -8, 14] }}
+                            transition={{ duration: 4.1, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">🎯</span>
-                                </div>
+                                <Target size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">95%+ accuracy rate</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Industry-leading precision and reliability</p>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
                       </div>
                     </div>
@@ -237,118 +281,134 @@ export default async function IndexPage({
                   <div className="w-full lg:w-1/2 lg:order-first">
                     <div className="text-center flex justify-center items-center relative">
                       <div className="w-[347px] relative">
-                        <Iphone15Pro src="https://placehold.co/900x1600?text=Smart+Organization" />
+                        <Iphone15Pro videoSrc="/videos/bpm_demo.mp4" />
                         
                         {/* Feature Cards - Responsive Layout */}
                         
                         {/* Mobile: Zigzag Cards */}
                         <div className="lg:hidden">
                           {/* Top Left Card */}
-                          <div className="absolute left-[-40px] top-[10%]">
+                          <motion.div 
+                            className="absolute left-[-40px] top-[10%]"
+                            animate={{ y: [-9, 11, -9] }}
+                            transition={{ duration: 4.3, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">📊</span>
-                                </div>
+                                <ChartBar size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Advanced analytics dashboard</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Deep insights into trends</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Top Right Card */}
-                          <div className="absolute right-[-40px] top-[25%]">
+                          <motion.div 
+                            className="absolute right-[-40px] top-[25%]"
+                            animate={{ y: [11, -9, 11] }}
+                            transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">💰</span>
-                                </div>
+                                <MapPin size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Real-time market valuations</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Live pricing updates</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Left Card */}
-                          <div className="absolute left-[-40px] top-[40%]">
+                          <motion.div 
+                            className="absolute left-[-40px] top-[40%]"
+                            animate={{ y: [-7, 13, -7] }}
+                            transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-rose-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">🏆</span>
-                                </div>
+                                <Trophy size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Condition tracking system</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Monitor wear and quality</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Right Card */}
-                          <div className="absolute right-[-40px] top-[55%]">
+                          <motion.div 
+                            className="absolute right-[-40px] top-[55%]"
+                            animate={{ y: [13, -7, 13] }}
+                            transition={{ duration: 3.9, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">🧠</span>
-                                </div>
+                                <Brain size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Smart collection insights</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">AI-powered recommendations</p>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
                         
                         {/* Desktop: Zigzag Cards */}
                         <div className="hidden lg:block">
                           {/* Top Left Card */}
-                          <div className="absolute left-[-130px] top-[10%]">
+                          <motion.div 
+                            className="absolute left-[-130px] top-[10%]"
+                            animate={{ y: [-11, 13, -11] }}
+                            transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">📊</span>
-                                </div>
+                                <ChartBar size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Advanced analytics dashboard</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Deep insights into your collection trends</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Top Right Card */}
-                          <div className="absolute right-[-130px] top-[25%]">
+                          <motion.div 
+                            className="absolute right-[-130px] top-[25%]"
+                            animate={{ y: [13, -11, 13] }}
+                            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">💰</span>
-                                </div>
+                                <CurrencyDollar size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Real-time market valuations</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Live pricing updates from global markets</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Left Card */}
-                          <div className="absolute left-[-130px] top-[40%]">
+                          <motion.div 
+                            className="absolute left-[-130px] top-[40%]"
+                            animate={{ y: [-9, 15, -9] }}
+                            transition={{ duration: 4.9, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-rose-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">🏆</span>
-                                </div>
+                                <Trophy size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Condition tracking system</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Monitor wear and quality over time</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Right Card */}
-                          <div className="absolute right-[-130px] top-[55%]">
+                          <motion.div 
+                            className="absolute right-[-130px] top-[55%]"
+                            animate={{ y: [15, -9, 15] }}
+                            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">🧠</span>
-                                </div>
+                                <Brain size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Smart collection insights</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">AI-powered recommendations and gaps</p>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
                       </div>
                     </div>
@@ -379,118 +439,134 @@ export default async function IndexPage({
                   <div className="w-full lg:w-1/2">
                     <div className="text-center flex justify-center items-center relative">
                       <div className="w-[347px] relative">
-                        <Iphone15Pro src="https://placehold.co/900x1600?text=Safe+Trading" />
+                        <Iphone15Pro videoSrc="/videos/bpm_demo.mp4" />
                         
                         {/* Feature Cards - Responsive Layout */}
                         
                         {/* Mobile: Zigzag Cards */}
                         <div className="lg:hidden">
                           {/* Top Left Card */}
-                          <div className="absolute left-[-40px] top-[10%]">
+                          <motion.div 
+                            className="absolute left-[-40px] top-[10%]"
+                            animate={{ y: [-10, 12, -10] }}
+                            transition={{ duration: 4.1, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-cyan-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">🌍</span>
-                                </div>
+                                <Globe size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Global collector network</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Connect with collectors worldwide</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Top Right Card */}
-                          <div className="absolute right-[-40px] top-[25%]">
+                          <motion.div 
+                            className="absolute right-[-40px] top-[25%]"
+                            animate={{ y: [12, -10, 12] }}
+                            transition={{ duration: 3.7, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-teal-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">🔒</span>
-                                </div>
+                                <Lock size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Secure escrow system</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Safe transactions with protection</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Left Card */}
-                          <div className="absolute left-[-40px] top-[40%]">
+                          <motion.div 
+                            className="absolute left-[-40px] top-[40%]"
+                            animate={{ y: [-8, 14, -8] }}
+                            transition={{ duration: 4.7, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-violet-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">✔️</span>
-                                </div>
+                                <Sparkle size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Authenticity verification</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Expert verification for items</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Right Card */}
-                          <div className="absolute right-[-40px] top-[55%]">
+                          <motion.div 
+                            className="absolute right-[-40px] top-[55%]"
+                            animate={{ y: [14, -8, 14] }}
+                            transition={{ duration: 4.0, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-[140px] text-left">
                               <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 bg-lime-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">💲</span>
-                                </div>
+                                <Money size={32} weight="bold" className="text-black" />
                                 <div className="text-xs font-bold text-gray-900">Fair market pricing</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Transparent pricing based on data</p>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
                         
                         {/* Desktop: Zigzag Cards */}
                         <div className="hidden lg:block">
                           {/* Top Left Card */}
-                          <div className="absolute left-[-130px] top-[10%]">
+                          <motion.div 
+                            className="absolute left-[-130px] top-[10%]"
+                            animate={{ y: [-12, 14, -12] }}
+                            transition={{ duration: 4.3, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">🌍</span>
-                                </div>
+                                <Globe size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Global collector network</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Connect with collectors worldwide</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Top Right Card */}
-                          <div className="absolute right-[-130px] top-[25%]">
+                          <motion.div 
+                            className="absolute right-[-130px] top-[25%]"
+                            animate={{ y: [14, -12, 14] }}
+                            transition={{ duration: 3.9, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">🔒</span>
-                                </div>
+                                <Lock size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Secure escrow system</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Safe transactions with built-in protection</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Left Card */}
-                          <div className="absolute left-[-130px] top-[40%]">
+                          <motion.div 
+                            className="absolute left-[-130px] top-[40%]"
+                            animate={{ y: [-10, 16, -10] }}
+                            transition={{ duration: 5.0, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-violet-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">✔️</span>
-                                </div>
+                                <CheckCircle size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Authenticity verification</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Expert verification for genuine items</p>
                             </div>
-                          </div>
+                          </motion.div>
                           
                           {/* Bottom Right Card */}
-                          <div className="absolute right-[-130px] top-[55%]">
+                          <motion.div 
+                            className="absolute right-[-130px] top-[55%]"
+                            animate={{ y: [16, -10, 16] }}
+                            transition={{ duration: 4.3, repeat: Infinity, ease: "easeInOut" }}
+                          >
                             <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl max-w-[200px] text-left">
                               <div className="flex items-center gap-3 mb-2">
-                                <div className="w-8 h-8 bg-lime-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-sm">💲</span>
-                                </div>
+                                <Money size={40} weight="bold" className="text-black" />
                                 <div className="text-sm font-bold text-gray-900">Fair market pricing</div>
                               </div>
                               <p className="text-xs text-gray-600 text-left">Transparent pricing based on real data</p>
                             </div>
-                          </div>
+                          </motion.div>
                         </div>
                       </div>
                     </div>
@@ -504,7 +580,7 @@ export default async function IndexPage({
 
       {/* Smart Technology Section */}
       <div className="px-[5%] mt-20">
-        <div className="bg-gray-50 pt-20 lg:pt-16 pb-20 lg:pb-16 rounded-[40px] overflow-hidden">
+        <div className="bg-gray-50 pt-32 lg:pt-28 pb-32 lg:pb-28 rounded-[40px] overflow-hidden">
           <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:min-h-[600px]">
               <div className="w-full lg:w-1/2 lg:order-last">
@@ -513,53 +589,32 @@ export default async function IndexPage({
                     <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Smart technology for analog collectors</h2>
                   </div>
 
-                    <div className="mb-10" id="accordionThree">
-                      <div>
-                        <h2>
-                          <button className="w-full text-left py-4 flex items-center justify-between font-semibold text-gray-800 text-xl hover:text-gray-900" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <span>Smart Recognition Engine</span>
-                            <svg className="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                          </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionThree">
-                          <div className="pb-4">
-                            <p className="text-xl text-gray-700 m-0">Computer vision and ML instantly identify album covers via camera, automatically matching artist, release year, tracklist, and pressing info with 95%+ accuracy, including rare editions.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="border-t border-gray-200">
-                        <h2>
-                          <button className="w-full text-left py-4 flex items-center justify-between font-semibold text-gray-800 text-xl hover:text-gray-900" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <span>Metadata Collection System</span>
-                            <svg className="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                          </button>
-                        </h2>
-                        <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionThree">
-                          <div className="pb-4">
-                            <p className="text-xl text-gray-700 m-0">Continuously collects record data through user behaviors - registration, ratings, trading. Real-time updates on condition, quality, rarity, and market prices build the world's most accurate vinyl database.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="border-t border-gray-200">
-                        <h2>
-                          <button className="w-full text-left py-4 flex items-center justify-between font-semibold text-gray-800 text-xl hover:text-gray-900" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                            <span>AI Investment Advisor</span>
-                            <svg className="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                          </button>
-                        </h2>
-                        <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionThree">
-                          <div className="pb-4">
-                            <p className="text-xl text-gray-700 m-0">Analyzes your collection patterns to recommend investment-worthy records. Considers market trends, price volatility, and rarity to grow asset value. Beta users saw 23% collection value increase in 6 months.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <Accordion type="single" collapsible className="mb-10" defaultValue="item-1">
+                      <AccordionItem value="item-1" className="border-b border-gray-200">
+                        <AccordionTrigger className="text-left py-4 font-semibold text-gray-800 text-xl hover:text-gray-900 hover:underline [&[data-state=open]>svg]:rotate-180">
+                          Smart Recognition Engine
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pt-0">
+                          <p className="text-xl text-gray-700 m-0">Computer vision and ML instantly identify album covers via camera, automatically matching artist, release year, tracklist, and pressing info with 95%+ accuracy, including rare editions.</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-2" className="border-b border-gray-200">
+                        <AccordionTrigger className="text-left py-4 font-semibold text-gray-800 text-xl hover:text-gray-900 hover:underline [&[data-state=open]>svg]:rotate-180">
+                          Metadata Collection System
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pt-0">
+                          <p className="text-xl text-gray-700 m-0">Continuously collects record data through user behaviors - registration, ratings, trading. Real-time updates on condition, quality, rarity, and market prices build the world's most accurate vinyl database.</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-3" className="border-b border-gray-200">
+                        <AccordionTrigger className="text-left py-4 font-semibold text-gray-800 text-xl hover:text-gray-900 hover:underline [&[data-state=open]>svg]:rotate-180">
+                          AI Investment Advisor
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-4 pt-0">
+                          <p className="text-xl text-gray-700 m-0">Analyzes your collection patterns to recommend investment-worthy records. Considers market trends, price volatility, and rarity to grow asset value. Beta users saw 23% collection value increase in 6 months.</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                     <Link href="#" className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold">Explore More <i className="ph ph-arrow-right ml-2"></i></Link>
                   </div>
                 </div>
@@ -588,45 +643,8 @@ export default async function IndexPage({
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="grid lg:grid-cols-2 gap-4">
-                  <div>
-                    <div className="bg-white rounded-3xl p-8 h-full aspect-square flex flex-col">
-                      <div className="border border-gray-200 rounded-2xl p-4 h-full relative flex flex-col">
-                        <div className="flex items-center mb-3">
-                          <h3 className="text-2xl font-bold text-gray-900 m-0">BPM Collect</h3>
-                        </div>
-                        <div className="flex-1 flex items-center justify-center mb-4">
-                          <div className="h-[200px] bg-gray-50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200">
-                            <span className="text-5xl">🎵</span>
-                          </div>
-                        </div>
-                        <p className="text-xl mb-3 text-gray-700">From record registration to management with camera-based automatic recognition.</p>
-                        <Link href={`/${lang}/bpm-collect`} className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold mt-auto">
-                          <span>Go to BPM Collect</span> <i className="ph ph-arrow-right ml-2"></i>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="bg-white rounded-3xl p-8 h-full aspect-square flex flex-col">
-                      <div className="border border-gray-200 rounded-2xl p-4 h-full relative flex flex-col">
-                        <div className="flex items-center mb-3">
-                          <h3 className="text-2xl font-bold text-gray-900 m-0">Kolektt Hub</h3>
-                        </div>
-                        <div className="flex-1 flex items-center justify-center mb-4">
-                          <div className="h-[200px] bg-gray-50 rounded-lg flex items-center justify-center border-2 border-dashed border-gray-200">
-                            <span className="text-5xl">🏢</span>
-                          </div>
-                        </div>
-                        <p className="text-xl mb-3 text-gray-700">Community, trading, and insights all in one place.</p>
-                        <Link href={`/${lang}/hub`} className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold mt-auto">
-                          <span>Go to Kolektt Hub</span> <i className="ph ph-arrow-right ml-2"></i>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="max-w-6xl mx-auto">
+                <CollectionBento lang={lang} />
               </div>
             </div>
           </div>
@@ -637,7 +655,7 @@ export default async function IndexPage({
 
         {/* Pricing Section */}
         <div className="px-[5%] relative z-10 mt-36 xl:mt-32 lg:mt-20">
-          <div className="bg-black rounded-[40px] py-20 lg:py-24">
+          <div className="bg-black rounded-[40px] py-12 lg:py-16">
             <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8">
               <KolekttPricing />
             </div>
@@ -646,8 +664,8 @@ export default async function IndexPage({
 
         {/* Download Section */}
         <section className="px-[5%] mt-20">
-          <div className="bg-gray-50 text-center pt-32 lg:pt-20 pb-32 lg:pb-20 rounded-[40px] overflow-hidden relative">
-            <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8">
+          <div className="bg-gray-50 text-center pt-40 lg:pt-48 pb-40 lg:pb-48 rounded-[40px] overflow-hidden relative">
+            <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
               <div className="relative z-10">
                 <div className="flex justify-center">
                   <div className="w-full lg:w-5/6">
@@ -723,11 +741,233 @@ export default async function IndexPage({
         </section>
       
       {/* Page-specific scripts for home page */}
-      <Script src="https://unpkg.com/three@0.158.0/build/three.min.js" strategy="beforeInteractive" />
-      <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" strategy="beforeInteractive" />
+      <Script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.js" strategy="beforeInteractive" />
       <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" strategy="beforeInteractive" />
-      <Script src="/components/image-swiper.js" strategy="lazyOnload" />
-      <Script src="/components/iphone-15-pro.js" strategy="lazyOnload" />
+      <Script id="shapes-animation" strategy="afterInteractive">
+        {`
+          function initShapesAnimation() {
+            console.log('Initializing shapes animation...');
+            console.log('GSAP available:', typeof gsap !== 'undefined');
+            
+            if (typeof gsap === 'undefined') {
+              console.error('GSAP not loaded! Retrying in 1 second...');
+              setTimeout(initShapesAnimation, 1000);
+              return;
+            }
+            
+            console.log('GSAP loaded successfully, starting animations');
+
+            // -------------- Ball Animation with Wave Motion
+            const ball = document.querySelector("#ball");
+            
+            if (ball) {
+              console.log('Ball element found');
+              gsap.set(ball, { x: 100, y: 100 });
+              
+              let lastScrollTime = Date.now();
+              let isScrolling = false;
+              let floatingAnimation = null;
+              
+              // Floating animation (when stopped)
+              function startFloatingAnimation() {
+                if (floatingAnimation) return; // Prevent duplicate execution if already running
+                
+                floatingAnimation = gsap.to(ball, {
+                  y: "+=15", // Move 15px up and down from current position
+                  duration: 2,
+                  ease: "sine.inOut",
+                  yoyo: true,
+                  repeat: -1,
+                  transformOrigin: "center center"
+                });
+              }
+              
+              // Stop floating animation
+              function stopFloatingAnimation() {
+                if (floatingAnimation) {
+                  floatingAnimation.kill();
+                  floatingAnimation = null;
+                }
+              }
+              
+              // Scroll-based ball animation (smooth movement)
+              function updateBallPosition() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const windowHeight = window.innerHeight;
+                const windowWidth = window.innerWidth;
+                
+                // Calculate scroll progress very quickly (based on 0.9x screen height)
+                const scrollProgress = Math.min(scrollTop / (windowHeight * 1), 1);
+                
+                // Calculate x position based on scroll (5% -> 85% of screen width)
+                const currentX = (windowWidth * 0.1) + (scrollProgress * (windowWidth * 0.8));
+                
+                // Linearly change base y value based on x position (10% -> 70% of screen height)
+                const baseY = (windowHeight * 0.5) + (scrollProgress * (windowHeight * 1.2));
+                
+                // Add wave effect
+                const waveY = baseY + Math.cos(currentX / 100) * 30;
+                
+                // Stop floating animation when scrolling
+                stopFloatingAnimation();
+                isScrolling = true;
+                lastScrollTime = Date.now();
+                
+                // Detect scroll stop and start floating animation
+                gsap.to(ball, { 
+                  x: currentX, 
+                  y: waveY, 
+                  duration: 0.3,
+                  ease: "power2.out",
+                  overwrite: true
+                });
+              }
+              
+              // Detect scroll stop
+              function checkScrollStop() {
+                if (isScrolling && Date.now() - lastScrollTime > 500) { // Consider stopped after 0.5 seconds
+                  isScrolling = false;
+                  startFloatingAnimation();
+                }
+              }
+              
+              // Periodically check for scroll stop
+              setInterval(checkScrollStop, 100);
+              
+              // Add scroll event listener (with throttle)
+              let ticking = false;
+              function requestTick() {
+                if (!ticking) {
+                  requestAnimationFrame(updateBallPosition);
+                  ticking = true;
+                }
+              }
+              
+              function handleScroll() {
+                ticking = false;
+                requestTick();
+              }
+              
+              window.addEventListener('scroll', handleScroll);
+              
+              // Set initial position and start floating animation
+              updateBallPosition();
+              setTimeout(startFloatingAnimation, 1000); // Start floating animation after 1 second
+            } else {
+              console.log('Ball element not found');
+            }
+
+            // -------------- Square Animation (from right to bottom left)
+            const square = document.querySelector("#square");
+            
+            if (square) {
+              console.log('Square element found');
+              // Set initial position to top right
+              gsap.set(square, { x: window.innerWidth - 50, y: 50 });
+              
+              let lastScrollTime = Date.now();
+              let isScrolling = false;
+              let squareFloatingAnimation = null;
+              
+              // Square floating animation (when stopped)
+              function startSquareFloatingAnimation() {
+                if (squareFloatingAnimation) return; // Prevent duplicate execution if already running
+                
+                squareFloatingAnimation = gsap.to(square, {
+                  y: "+=12", // Move 12px up and down from current position (smaller than ball)
+                  duration: 3.0, // Slightly slower than ball
+                  ease: "sine.inOut",
+                  yoyo: true,
+                  repeat: -1,
+                  transformOrigin: "center center"
+                });
+              }
+              
+              // Stop square floating animation
+              function stopSquareFloatingAnimation() {
+                if (squareFloatingAnimation) {
+                  squareFloatingAnimation.kill();
+                  squareFloatingAnimation = null;
+                }
+              }
+              
+              // Scroll-based square animation (from right to bottom left)
+              function updateSquarePosition() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const windowHeight = window.innerHeight;
+                const windowWidth = window.innerWidth;
+                
+                // Calculate scroll progress
+                const scrollProgress = Math.min(scrollTop / (windowHeight * 1), 1);
+                
+                // Move from right to left (95% -> 15% of screen width)
+                const currentX = (windowWidth * 0.90) - (scrollProgress * (windowWidth * 0.8));
+                
+                // Move from top to bottom (10% -> 80% of screen height)
+                const baseY = (windowHeight * 0.5) + (scrollProgress * (windowHeight * 1.5));
+                
+                // Add wave effect (opposite direction from ball)
+                const waveY = baseY + Math.sin(currentX / 80) * 25;
+                
+                // Stop floating animation when scrolling
+                stopSquareFloatingAnimation();
+                isScrolling = true;
+                lastScrollTime = Date.now();
+                
+                // Detect scroll
+                gsap.to(square, { 
+                  x: currentX, 
+                  y: waveY, 
+                  duration: 0.3,
+                  ease: "power2.out",
+                  overwrite: true
+                });
+              }
+              
+              // Detect scroll stop
+              function checkSquareScrollStop() {
+                if (isScrolling && Date.now() - lastScrollTime > 500) {
+                  isScrolling = false;
+                  startSquareFloatingAnimation();
+                }
+              }
+              
+              // Periodic check for scroll stop detection
+              setInterval(checkSquareScrollStop, 100);
+              
+              let ticking = false;
+              
+              function requestSquareTick() {
+                if (!ticking) {
+                  requestAnimationFrame(updateSquarePosition);
+                  ticking = true;
+                }
+              }
+              
+              function handleSquareScroll() {
+                ticking = false;
+                requestSquareTick();
+              }
+              
+              window.addEventListener('scroll', handleSquareScroll);
+              
+              // Set initial position and start floating animation
+              updateSquarePosition();
+              setTimeout(startSquareFloatingAnimation, 1200); // Start floating animation after 1.2 seconds (slightly different from ball)
+            } else {
+              console.log('Square element not found');
+            }
+          }
+          
+          // Start initialization when DOM is ready
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initShapesAnimation);
+          } else {
+            // DOM is already loaded, start immediately
+            initShapesAnimation();
+          }
+        `}
+      </Script>
     </>
   );
 }

@@ -85,7 +85,7 @@ export default function KolekttPricing() {
     };
 
     return (
-        <div className="relative flex flex-col items-center justify-center max-w-5xl py-20 mx-auto">
+        <div className="relative flex flex-col items-center justify-center max-w-5xl py-12 mx-auto">
             <div className="flex flex-col items-center justify-center max-w-2xl mx-auto">
                 <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-6 text-white">

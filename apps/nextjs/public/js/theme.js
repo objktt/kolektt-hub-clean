@@ -8,6 +8,17 @@
 
 (function($) {
     "use strict";
+    
+    // Exit early if jQuery is not available
+    if (!$ || typeof $ !== 'function') {
+        console.warn('jQuery is not available. Theme functionality may not work properly.');
+        return;
+    }
+    
+    // Check if GSAP is available for animations
+    if (typeof gsap === 'undefined') {
+        console.warn('GSAP is not available. Some animations may not work properly.');
+    }
 
       //-------------- Click event to scroll to top
       $(window).on('scroll', function (){
@@ -856,4 +867,4 @@ $(document).ready(function() {
   }
 });
 
-})(jQuery);
+})(typeof jQuery !== 'undefined' ? jQuery : null);

@@ -1,5 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import { Inter as FontSans } from "next/font/google";
+import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 
 import "~/styles/globals.css";
@@ -21,7 +21,9 @@ import { siteConfig } from "~/config/site";
 
 const fontSans = FontSans({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 // Font files can be colocated inside of `pages`

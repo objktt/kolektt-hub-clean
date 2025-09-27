@@ -25,7 +25,6 @@ export const TestimonialsColumn = (props: {
           repeatType: "loop",
         }}
         className="flex flex-col gap-6 pb-6">
-      >
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>

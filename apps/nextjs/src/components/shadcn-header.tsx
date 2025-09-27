@@ -99,35 +99,27 @@ export function ShadcnHeader({ lang }: ShadcnHeaderProps) {
               </SheetTrigger>
               <SheetContent 
                 side="right" 
-                className="w-[300px] !bg-white border-l border-gray-200" 
-                style={{ 
-                  backgroundColor: '#ffffff',
-                  '--foreground': '#111827',
-                  '--muted-foreground': '#6b7280'
-                } as React.CSSProperties}
+                className="w-[300px] bg-white border-l border-gray-200"
               >
                 <SheetHeader className="text-left">
-                  <SheetTitle className="text-xl font-bold !text-gray-900" style={{ color: '#111827' }}>Menu</SheetTitle>
+                  <SheetTitle className="text-xl font-bold text-gray-900">Menu</SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col space-y-1 mt-6">
                   <Link
                     href={`/${lang}/bpm-collect`}
-                    className="text-base font-medium !text-gray-900 hover:!text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all"
-                    style={{ color: '#111827' }}
+                    className="text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all"
                   >
                     BPM Collect
                   </Link>
                   <Link
                     href={`/${lang}/hub`}
-                    className="text-base font-medium !text-gray-900 hover:!text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all"
-                    style={{ color: '#111827' }}
+                    className="text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all"
                   >
                     Kolektt Hub
                   </Link>
                   <Link
                     href={`/${lang}/about`}
-                    className="text-base font-medium !text-gray-900 hover:!text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all"
-                    style={{ color: '#111827' }}
+                    className="text-base font-medium text-gray-900 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-lg transition-all"
                   >
                     About
                   </Link>

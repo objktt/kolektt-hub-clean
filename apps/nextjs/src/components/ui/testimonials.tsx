@@ -74,10 +74,10 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter text-center text-white">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter text-center text-black">
             Amazing!
           </h2>
-          <p className="text-center mt-5 opacity-75 text-uppercase text-white">
+          <p className="text-center mt-5 opacity-75 text-uppercase text-black">
             BPM Collect Beta Feedback
           </p>
         </motion.div>
