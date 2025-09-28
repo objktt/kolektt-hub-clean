@@ -41,21 +41,22 @@ export const metadata = {
     default: "Kolektt - All your collections begin here",
     template: `%s | Kolektt`,
   },
-  description: "Smart platform for analog collectors. Easily collect, manage, and trade your collection with camera-based automatic recognition, metadata collection, and investment insights.",
+  description:
+    "Smart platform for analog collectors. Easily collect, manage, and trade your collection with camera-based automatic recognition, metadata collection, and investment insights.",
   keywords: [
-    "Kolektt", 
-    "collect", 
-    "collection", 
-    "vinyl", 
-    "record", 
-    "analog", 
-    "collecting", 
-    "BPM Collect", 
-    "Kolektt Hub", 
-    "metadata", 
-    "AI recognition", 
-    "trading", 
-    "community"
+    "Kolektt",
+    "collect",
+    "collection",
+    "vinyl",
+    "record",
+    "analog",
+    "collecting",
+    "BPM Collect",
+    "Kolektt Hub",
+    "metadata",
+    "AI recognition",
+    "trading",
+    "community",
   ],
   authors: [
     {
@@ -68,7 +69,8 @@ export const metadata = {
     locale: "en_US",
     url: "https://kolektt.com",
     title: "Kolektt — All your collections begin here.",
-    description: "Smart platform for analog collectors. Easily collect, manage, and trade your collection with camera-based automatic recognition, metadata collection, and investment insights.",
+    description:
+      "Smart platform for analog collectors. Easily collect, manage, and trade your collection with camera-based automatic recognition, metadata collection, and investment insights.",
     siteName: "Kolektt",
     images: [
       {
@@ -88,13 +90,19 @@ export const metadata = {
 };
 
 // 개발 모드 체크 및 유효한 Clerk 키 체크
-const isDev = process.env.NODE_ENV === 'development' || process.env.IS_DEBUG === 'true';
-const hasValidClerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
-  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== '1' && 
-  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith('pk_');
+const isDev =
+  process.env.NODE_ENV === "development" || process.env.IS_DEBUG === "true";
+const hasValidClerkKey =
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== "1" &&
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith("pk_");
 
 // Clerk Provider Wrapper 컴포넌트
-const ConditionalClerkProvider = ({ children }: { children: React.ReactNode }) => {
+const ConditionalClerkProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   // 개발 모드이거나 유효하지 않은 Clerk 키인 경우 Clerk을 사용하지 않음
   if (isDev || !hasValidClerkKey) {
     return <>{children}</>;

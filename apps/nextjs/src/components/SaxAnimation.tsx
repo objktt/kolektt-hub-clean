@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Lottie from 'lottie-react';
+import { useState, useEffect, useRef } from "react";
+import Lottie from "lottie-react";
 
 interface SaxAnimationProps {
   isActive: boolean;
@@ -15,13 +15,13 @@ export default function SaxAnimation({ isActive, bpm }: SaxAnimationProps) {
 
   // Load Lottie animation data
   useEffect(() => {
-    fetch('https://fonts.gstatic.com/s/e/notoemoji/latest/1f3b7/lottie.json')
-      .then(response => response.json())
-      .then(data => {
+    fetch("https://fonts.gstatic.com/s/e/notoemoji/latest/1f3b7/lottie.json")
+      .then((response) => response.json())
+      .then((data) => {
         setAnimationData(data);
       })
-      .catch(error => {
-        console.error('Failed to load Saxophone animation:', error);
+      .catch((error) => {
+        console.error("Failed to load Saxophone animation:", error);
       });
   }, []);
 
@@ -34,22 +34,26 @@ export default function SaxAnimation({ isActive, bpm }: SaxAnimationProps) {
     if (isActive && bpm > 0 && lottieRef.current && animationData) {
       // Convert BPM to beats per second
       const beatsPerSecond = bpm / 60;
-      
+
       // Get base animation duration in seconds
       const baseDurationSeconds = animationData.op / animationData.fr;
-      
+
       // Calculate speed multiplier
       // We want one sax animation cycle to take exactly (1 / beatsPerSecond) seconds
       // speed = baseDurationSeconds / targetDurationSeconds
       const targetDurationSeconds = 1 / beatsPerSecond;
-      const speed = (baseDurationSeconds / targetDurationSeconds) / 2; // Reduced by half like other animations
+      const speed = baseDurationSeconds / targetDurationSeconds / 2; // Reduced by half like other animations
 
       console.log(`Saxophone - BPM: ${bpm}`);
       console.log(`Saxophone - Beats per second: ${beatsPerSecond.toFixed(3)}`);
-      console.log(`Saxophone - Base animation duration: ${baseDurationSeconds.toFixed(3)}s`);
-      console.log(`Saxophone - Target duration per cycle: ${targetDurationSeconds.toFixed(3)}s`);
+      console.log(
+        `Saxophone - Base animation duration: ${baseDurationSeconds.toFixed(3)}s`,
+      );
+      console.log(
+        `Saxophone - Target duration per cycle: ${targetDurationSeconds.toFixed(3)}s`,
+      );
       console.log(`Saxophone - Required speed: ${speed.toFixed(3)}x`);
-      
+
       lottieRef.current.setSpeed(speed);
       lottieRef.current.play(); // Start continuous loop
     } else if (lottieRef.current) {
@@ -74,7 +78,7 @@ export default function SaxAnimation({ isActive, bpm }: SaxAnimationProps) {
 
   return (
     <div className="relative">
-      <Lottie 
+      <Lottie
         lottieRef={lottieRef}
         animationData={animationData}
         loop={true}

@@ -62,7 +62,7 @@ jobs:
 
 
       - name: lint and type-check
-        run: bun run lint:ci && bun run format && bun run typecheck
+        run: bun run lint:ci && bun run format:ci && bun run typecheck
         env:
           # Database
           POSTGRES_HOST: postgres

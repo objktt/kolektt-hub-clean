@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Lottie from 'lottie-react';
+import { useState, useEffect, useRef } from "react";
+import Lottie from "lottie-react";
 
 interface ClapAnimationProps {
   isActive: boolean;
@@ -15,13 +15,15 @@ export default function ClapAnimation({ isActive, bpm }: ClapAnimationProps) {
 
   // Load Lottie animation data
   useEffect(() => {
-    fetch('https://fonts.gstatic.com/s/e/notoemoji/latest/1f44f_1f3fb/lottie.json')
-      .then(response => response.json())
-      .then(data => {
+    fetch(
+      "https://fonts.gstatic.com/s/e/notoemoji/latest/1f44f_1f3fb/lottie.json",
+    )
+      .then((response) => response.json())
+      .then((data) => {
         setAnimationData(data);
       })
-      .catch(error => {
-        console.error('Failed to load Lottie animation:', error);
+      .catch((error) => {
+        console.error("Failed to load Lottie animation:", error);
       });
   }, []);
 
@@ -34,22 +36,26 @@ export default function ClapAnimation({ isActive, bpm }: ClapAnimationProps) {
     if (isActive && bpm > 0 && lottieRef.current && animationData) {
       // Convert BPM to beats per second
       const beatsPerSecond = bpm / 60;
-      
+
       // Get base animation duration in seconds
       const baseDurationSeconds = animationData.op / animationData.fr;
-      
+
       // Calculate speed multiplier
       // We want one clap cycle to take exactly (1 / beatsPerSecond) seconds
       // speed = baseDurationSeconds / targetDurationSeconds
       const targetDurationSeconds = 1 / beatsPerSecond;
-      const speed = (baseDurationSeconds / targetDurationSeconds) / 2;
-      
+      const speed = baseDurationSeconds / targetDurationSeconds / 2;
+
       console.log(`BPM: ${bpm}`);
       console.log(`Beats per second: ${beatsPerSecond.toFixed(3)}`);
-      console.log(`Base animation duration: ${baseDurationSeconds.toFixed(3)}s`);
-      console.log(`Target duration per clap: ${targetDurationSeconds.toFixed(3)}s`);
+      console.log(
+        `Base animation duration: ${baseDurationSeconds.toFixed(3)}s`,
+      );
+      console.log(
+        `Target duration per clap: ${targetDurationSeconds.toFixed(3)}s`,
+      );
       console.log(`Required speed: ${speed.toFixed(3)}x`);
-      
+
       lottieRef.current.setSpeed(speed);
       lottieRef.current.play(); // Start continuous loop
     } else if (lottieRef.current) {
@@ -74,7 +80,7 @@ export default function ClapAnimation({ isActive, bpm }: ClapAnimationProps) {
 
   return (
     <div className="relative">
-      <Lottie 
+      <Lottie
         lottieRef={lottieRef}
         animationData={animationData}
         loop={true}

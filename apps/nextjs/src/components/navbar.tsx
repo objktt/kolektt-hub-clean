@@ -43,14 +43,14 @@ export function NavBar({
   const scrolled = useScroll(50);
   const signInModal = useSigninModal();
   const segment = useSelectedLayoutSegment();
-  
+
   // 개발 모드 체크 - 하이드레이션 오류 방지
   const [isDev, setIsDev] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  
+
   useEffect(() => {
     setIsClient(true);
-    setIsDev(process.env.NODE_ENV === 'development');
+    setIsDev(process.env.NODE_ENV === "development");
   }, []);
 
   return (
@@ -60,7 +60,11 @@ export function NavBar({
       }`}
     >
       <div className="container flex h-16 items-center justify-between py-4">
-        <MainNav items={items} params={{ lang: `${lang}` }} marketing={marketing}>
+        <MainNav
+          items={items}
+          params={{ lang: `${lang}` }}
+          marketing={marketing}
+        >
           {children}
         </MainNav>
 
@@ -70,7 +74,13 @@ export function NavBar({
               {items?.map((item, index) => (
                 <Link
                   key={index}
-                  href={item.disabled ? "#" : (item.href.startsWith("http") ? item.href : `/${lang}${item.href}`)}
+                  href={
+                    item.disabled
+                      ? "#"
+                      : item.href.startsWith("http")
+                        ? item.href
+                        : `/${lang}${item.href}`
+                  }
                   className={cn(
                     "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
                     item.href.startsWith(`/${segment}`)
@@ -111,12 +121,7 @@ export function NavBar({
             />
           ) : !isClient ? (
             // 서버 렌더링 시 기본 버튼
-            <Button
-              className="px-3"
-              variant="default"
-              size="sm"
-              disabled
-            >
+            <Button className="px-3" variant="default" size="sm" disabled>
               Loading...
             </Button>
           ) : !isDev ? (
@@ -132,12 +137,7 @@ export function NavBar({
             </Button>
           ) : (
             // 개발 모드에서는 더미 버튼 표시
-            <Button
-              className="px-3"
-              variant="outline"
-              size="sm"
-              disabled
-            >
+            <Button className="px-3" variant="outline" size="sm" disabled>
               Dev Mode
             </Button>
           )}

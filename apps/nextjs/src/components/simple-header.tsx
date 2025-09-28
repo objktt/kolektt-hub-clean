@@ -17,11 +17,13 @@ export function SimpleHeader({ lang }: SimpleHeaderProps) {
 
   // Dynamic styles based on scroll state
   const getHeaderStyles = () => ({
-    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    color: '#111827',
-    border: `1px solid ${isScrolled ? 'rgba(229, 231, 235, 0.8)' : 'rgba(229, 231, 235, 0.5)'}`
+    backgroundColor: isScrolled
+      ? "rgba(255, 255, 255, 0.95)"
+      : "rgba(255, 255, 255, 0.95)",
+    backdropFilter: "blur(20px)",
+    WebkitBackdropFilter: "blur(20px)",
+    color: "#111827",
+    border: `1px solid ${isScrolled ? "rgba(229, 231, 235, 0.8)" : "rgba(229, 231, 235, 0.5)"}`,
   });
 
   React.useEffect(() => {
@@ -30,29 +32,29 @@ export function SimpleHeader({ lang }: SimpleHeaderProps) {
       setIsScrolled(scrollPosition > 20);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header 
+    <header
       className={`force-white-header fixed z-50 transition-all duration-300 ease-in-out ${
-        isScrolled 
-          ? 'backdrop-blur-lg shadow-xl shadow-black/10' 
-          : 'backdrop-blur-sm shadow-md'
+        isScrolled
+          ? "backdrop-blur-lg shadow-xl shadow-black/10"
+          : "backdrop-blur-sm shadow-md"
       } rounded-3xl`}
       style={{
         ...getHeaderStyles(),
-        top: '1rem',
-        left: 'clamp(0.5rem, 2vw, 1.875rem)',
-        right: 'clamp(0.5rem, 2vw, 1.875rem)'
+        top: "1rem",
+        left: "clamp(0.5rem, 2vw, 1.875rem)",
+        right: "clamp(0.5rem, 2vw, 1.875rem)",
       }}
     >
       <div className="container">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center ml-2 md:ml-0">
-            <Link 
+            <Link
               href={`/${lang}`}
               className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
             >
@@ -62,19 +64,19 @@ export function SimpleHeader({ lang }: SimpleHeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex md:space-x-2">
-            <Link 
+            <Link
               href={`/${lang}/bpm-collect`}
               className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 text-base font-medium transition-all duration-200 rounded-lg"
             >
               BPM Collect
             </Link>
-            <Link 
+            <Link
               href={`/${lang}/hub`}
               className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 text-base font-medium transition-all duration-200 rounded-lg"
             >
               Kolektt Hub
             </Link>
-            <Link 
+            <Link
               href={`/${lang}/about`}
               className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 text-base font-medium transition-all duration-200 rounded-lg"
             >
@@ -84,19 +86,19 @@ export function SimpleHeader({ lang }: SimpleHeaderProps) {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex md:items-center md:space-x-3">
-            <Link 
+            <Link
               href={`/${lang}/bpm-collect`}
               className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 text-base font-medium transition-all duration-200 rounded-lg"
             >
               Try Demo
             </Link>
-            <Link 
+            <Link
               href={`/${lang}/hub`}
               className="text-gray-700 hover:text-gray-900 border border-gray-300 hover:border-gray-400 hover:bg-gray-50 rounded-lg px-4 py-2 text-base font-medium transition-all duration-200"
             >
               Sign In
             </Link>
-            <Link 
+            <Link
               href={`/${lang}/hub`}
               className="bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md rounded-lg px-4 py-2 text-base font-medium transition-all duration-200 shadow-sm"
             >

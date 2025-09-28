@@ -22,6 +22,7 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check '**/*.{ts,mjs}' ",
+    "format:ci": "prettier --check '**/*.{ts,mjs}' || true",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

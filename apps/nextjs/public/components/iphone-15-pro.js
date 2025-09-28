@@ -3,7 +3,7 @@ class iPhone15Pro {
   constructor(options = {}) {
     this.width = options.width || 300;
     this.height = options.height || 600;
-    this.className = options.className || '';
+    this.className = options.className || "";
   }
 
   render(container) {
@@ -46,7 +46,7 @@ class iPhone15Pro {
       </div>
     `;
 
-    if (typeof container === 'string') {
+    if (typeof container === "string") {
       document.querySelector(container).innerHTML = iPhoneHTML;
     } else if (container instanceof HTMLElement) {
       container.innerHTML = iPhoneHTML;
@@ -57,13 +57,16 @@ class iPhone15Pro {
 
   // Get the screen element for overlaying content
   getScreenElement(container) {
-    const containerEl = typeof container === 'string' ? document.querySelector(container) : container;
-    return containerEl.querySelector('.iphone-screen');
+    const containerEl =
+      typeof container === "string"
+        ? document.querySelector(container)
+        : container;
+    return containerEl.querySelector(".iphone-screen");
   }
 }
 
 // Export for use
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = iPhone15Pro;
 } else {
   window.iPhone15Pro = iPhone15Pro;

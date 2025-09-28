@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@saasfly/ui';
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@saasfly/ui";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,8 +12,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '@saasfly/ui/navigation-menu';
-import { Button } from '@saasfly/ui/button';
+} from "@saasfly/ui/navigation-menu";
+import { Button } from "@saasfly/ui/button";
 import type { Locale } from "~/config/i18n-config";
 
 interface ModernHeaderProps {
@@ -22,13 +22,15 @@ interface ModernHeaderProps {
 
 export default function ModernHeader({ lang }: ModernHeaderProps) {
   const pathname = usePathname();
-  
+
   // 현재 경로에 따라 활성 상태 확인
   const isActive = (path: string) => {
-    if (path === '/') {
+    if (path === "/") {
       return pathname === `/${lang}` || pathname === `/${lang}/`;
     }
-    return pathname === `/${lang}${path}` || pathname.startsWith(`/${lang}${path}`);
+    return (
+      pathname === `/${lang}${path}` || pathname.startsWith(`/${lang}${path}`)
+    );
   };
 
   return (
@@ -60,7 +62,8 @@ export default function ModernHeader({ lang }: ModernHeaderProps) {
                           BPM Collect
                         </div>
                         <p className="text-sm leading-tight text-muted-foreground">
-                          Smart platform for analog collectors with AI recognition
+                          Smart platform for analog collectors with AI
+                          recognition
                         </p>
                       </Link>
                     </NavigationMenuLink>
@@ -74,39 +77,40 @@ export default function ModernHeader({ lang }: ModernHeaderProps) {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            
+
             <NavigationMenuItem>
               <Link href={`/${lang}/bpm-collect`} legacyBehavior passHref>
-                <NavigationMenuLink 
+                <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    isActive('/bpm-collect') && 'bg-accent text-accent-foreground'
+                    isActive("/bpm-collect") &&
+                      "bg-accent text-accent-foreground",
                   )}
                 >
                   BPM Collect
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            
+
             <NavigationMenuItem>
               <Link href={`/${lang}/hub`} legacyBehavior passHref>
-                <NavigationMenuLink 
+                <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    isActive('/hub') && 'bg-accent text-accent-foreground'
+                    isActive("/hub") && "bg-accent text-accent-foreground",
                   )}
                 >
                   Kolektt Hub
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            
+
             <NavigationMenuItem>
               <Link href={`/${lang}/about`} legacyBehavior passHref>
-                <NavigationMenuLink 
+                <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    isActive('/about') && 'bg-accent text-accent-foreground'
+                    isActive("/about") && "bg-accent text-accent-foreground",
                   )}
                 >
                   About
@@ -119,9 +123,7 @@ export default function ModernHeader({ lang }: ModernHeaderProps) {
         {/* Right side - Enter Hub button */}
         <div className="flex flex-1 items-center justify-end space-x-2">
           <Button asChild>
-            <Link href={`/${lang}/hub`}>
-              Enter Hub
-            </Link>
+            <Link href={`/${lang}/hub`}>Enter Hub</Link>
           </Button>
         </div>
       </div>
@@ -140,7 +142,7 @@ const ListItem = React.forwardRef<
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
+            className,
           )}
           {...props}
         >
@@ -151,6 +153,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = "ListItem"
+  );
+});
+ListItem.displayName = "ListItem";

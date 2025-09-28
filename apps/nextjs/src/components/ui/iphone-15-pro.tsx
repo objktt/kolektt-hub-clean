@@ -30,13 +30,13 @@ export function Iphone15Pro({
 }: Iphone15ProProps) {
   const hasVideo = !!videoSrc;
   const hasMedia = hasVideo || !!src;
-  
+
   // Debug logging
-  console.log('iPhone15Pro render:', {
+  console.log("iPhone15Pro render:", {
     videoSrc,
     hasVideo,
     hasMedia,
-    src
+    src,
   });
 
   return (

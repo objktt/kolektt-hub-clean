@@ -29,12 +29,14 @@ export function UserAccountNav({
 }: UserAccountNavProps) {
   const [isDev, setIsDev] = useState(true); // Default to dev mode for SSR
   const [isClient, setIsClient] = useState(false);
-  
+
   useEffect(() => {
     setIsClient(true);
-    setIsDev(process.env.NODE_ENV === 'development' || process.env.IS_DEBUG === 'true');
+    setIsDev(
+      process.env.NODE_ENV === "development" || process.env.IS_DEBUG === "true",
+    );
   }, []);
-  
+
   // Simple logout function that doesn't rely on Clerk in dev mode
   const handleLogout = () => {
     if (isDev) {
@@ -46,12 +48,10 @@ export function UserAccountNav({
       window.location.href = `/${lang}/login-clerk`;
     }
   };
-  
+
   if (!isClient) {
     // Server-side rendering fallback
-    return (
-      <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />
-    );
+    return <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />;
   }
 
   return (

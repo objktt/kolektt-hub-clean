@@ -15,7 +15,7 @@ export default async function PricingPage({
   };
 }) {
   const dict = await getDictionary(lang);
-  
+
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
       <PricingCards

@@ -1,7 +1,4 @@
-import {
-  MusicIcon,
-  Users2Icon,
-} from "lucide-react";
+import { MusicIcon, Users2Icon } from "lucide-react";
 
 import { BentoCard, BentoGrid } from "~/components/ui/bento-grid";
 import type { Locale } from "~/config/i18n-config";
@@ -10,7 +7,8 @@ const features = [
   {
     Icon: MusicIcon,
     name: "BPM Collect",
-    description: "From record registration to management with camera-based automatic recognition.",
+    description:
+      "From record registration to management with camera-based automatic recognition.",
     href: "/bpm-collect",
     cta: "Go to BPM Collect",
     background: (
@@ -43,9 +41,9 @@ function CollectionBento({ lang }: CollectionBentoProps) {
   return (
     <BentoGrid className="grid-cols-1 lg:grid-cols-2 auto-rows-[24rem]">
       {features.map((feature) => (
-        <BentoCard 
-          key={feature.name} 
-          {...feature} 
+        <BentoCard
+          key={feature.name}
+          {...feature}
           href={`/${lang}${feature.href}`}
         />
       ))}

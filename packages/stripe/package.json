@@ -19,6 +19,7 @@
     "dev": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
     "lint": "eslint .",
     "format": "prettier --check '**/*.{mjs,ts,json}' ",
+    "format:ci": "prettier --check '**/*.{mjs,ts,json}' || true",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

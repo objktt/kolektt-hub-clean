@@ -12,9 +12,9 @@ const DummyModal = ({ dict }: { dict: Record<string, string> }) => {
 export const ModalProvider = ({ dict }: { dict: Record<string, string> }) => {
   const mounted = useMounted();
   const [isDev, setIsDev] = useState(false);
-  
+
   useEffect(() => {
-    setIsDev(process.env.NODE_ENV === 'development');
+    setIsDev(process.env.NODE_ENV === "development");
   }, []);
 
   if (!mounted) {

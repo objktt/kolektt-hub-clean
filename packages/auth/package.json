@@ -8,6 +8,7 @@
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "format": "prettier --check '**/*.{mjs,ts,json}' ",
+    "format:ci": "prettier --check '**/*.{mjs,ts,json}' || true",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -98,7 +98,7 @@ export const Footer7 = ({
             <p className="text-base text-gray-300 leading-relaxed">
               {description}
             </p>
-            
+
             {/* Newsletter Signup */}
             <div className="w-full max-w-sm">
               <h4 className="text-sm font-semibold text-white mb-3">
@@ -138,15 +138,17 @@ export const Footer7 = ({
                 <ul className="space-y-3">
                   {section.links.map((link, linkIdx) => (
                     <li key={linkIdx}>
-                      {link.href.startsWith('mailto:') || link.href.startsWith('http') || link.href === '#' ? (
-                        <a 
+                      {link.href.startsWith("mailto:") ||
+                      link.href.startsWith("http") ||
+                      link.href === "#" ? (
+                        <a
                           href={link.href}
                           className="text-sm text-gray-300 hover:text-white transition-colors"
                         >
                           {link.name}
                         </a>
                       ) : (
-                        <Link 
+                        <Link
                           href={`/${lang}${link.href}`}
                           className="text-sm text-gray-300 hover:text-white transition-colors"
                         >
@@ -167,7 +169,7 @@ export const Footer7 = ({
           <ul className="flex flex-col gap-4 sm:flex-row sm:gap-6">
             {legalLinks.map((link, idx) => (
               <li key={idx}>
-                <a 
+                <a
                   href={link.href}
                   className="hover:text-white transition-colors"
                 >

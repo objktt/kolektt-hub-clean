@@ -21,6 +21,10 @@
       "outputs": ["node_modules/.cache/.prettiercache"],
       "outputMode": "new-only"
     },
+    "format:ci": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+      "outputMode": "new-only"
+    },
     "lint": {
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"]

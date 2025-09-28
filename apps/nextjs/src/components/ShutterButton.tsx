@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 interface ShutterButtonProps {
   onClick?: () => void;
@@ -6,7 +6,7 @@ interface ShutterButtonProps {
 
 export default function ShutterButton({ onClick }: ShutterButtonProps) {
   const handleClick = () => {
-    console.log('Shutter clicked');
+    console.log("Shutter clicked");
     if (onClick) {
       onClick();
     }

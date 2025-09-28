@@ -1,7 +1,11 @@
 import "server-only";
 
 import { cookies } from "next/headers";
-import { createTRPCProxyClient, loggerLink, TRPCClientError } from "@trpc/client";
+import {
+  createTRPCProxyClient,
+  loggerLink,
+  TRPCClientError,
+} from "@trpc/client";
 
 import { AppRouter } from "@saasfly/api";
 
@@ -12,10 +16,12 @@ import { TRPCErrorResponse } from "@trpc/server/rpc";
 import { cache } from "react";
 import { appRouter } from "../../../../packages/api/src/root";
 // Conditional Clerk usage
-const isDev = process.env.NODE_ENV === 'development' || process.env.IS_DEBUG === 'true';
-const hasValidClerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
-  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== '1' && 
-  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith('pk_');
+const isDev =
+  process.env.NODE_ENV === "development" || process.env.IS_DEBUG === "true";
+const hasValidClerkKey =
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== "1" &&
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith("pk_");
 
 // Mock auth function for development or invalid Clerk keys
 const mockAuth = () => Promise.resolve({ userId: null });
@@ -39,14 +45,13 @@ type AuthObject = { userId: string | null };
 export const createTRPCContext = async (opts: {
   headers: Headers;
   auth: AuthObject;
-// eslint-disable-next-line @typescript-eslint/require-await
+  // eslint-disable-next-line @typescript-eslint/require-await
 }) => {
   return {
     userId: opts.auth.userId,
     ...opts,
   };
 };
-
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
@@ -75,7 +80,7 @@ export const trpc = createTRPCProxyClient<AppRouter>({
      * Components always run on the server, we can just call the procedure as a function.
      */
     () =>
-      ({op}) =>
+      ({ op }) =>
         observable((observer) => {
           createContext()
             .then((ctx) => {
@@ -88,7 +93,7 @@ export const trpc = createTRPCProxyClient<AppRouter>({
               });
             })
             .then((data) => {
-              observer.next({result: {data}});
+              observer.next({ result: { data } });
               observer.complete();
             })
             .catch((cause: TRPCErrorResponse) => {
@@ -97,4 +102,4 @@ export const trpc = createTRPCProxyClient<AppRouter>({
         }),
   ],
 });
-export {type RouterInputs, type RouterOutputs} from "@saasfly/api";
+export { type RouterInputs, type RouterOutputs } from "@saasfly/api";

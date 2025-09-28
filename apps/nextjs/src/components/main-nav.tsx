@@ -18,7 +18,12 @@ interface MainNavProps {
   marketing?: Record<string, string | object>;
 }
 
-export function MainNav({ items, children, params: { lang }, marketing }: MainNavProps) {
+export function MainNav({
+  items,
+  children,
+  params: { lang },
+  marketing,
+}: MainNavProps) {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -29,13 +34,22 @@ export function MainNav({ items, children, params: { lang }, marketing }: MainNa
   return (
     <div className="flex gap-6 md:gap-10">
       <div className="flex items-center">
-        <Link href={`/${lang}`} className="hidden items-center space-x-2 md:flex">
+        <Link
+          href={`/${lang}`}
+          className="hidden items-center space-x-2 md:flex"
+        >
           <div className="text-3xl">Saasfly</div>
         </Link>
 
-        <Link href="https://docs.saasfly.io" target="_blank" className="ml-4 hidden md:flex lg:flex xl:flex">
+        <Link
+          href="https://docs.saasfly.io"
+          target="_blank"
+          className="ml-4 hidden md:flex lg:flex xl:flex"
+        >
           <DocumentGuide>
-            {typeof marketing?.introducing === "string" ? marketing?.introducing : "Introducing Saasfly"}
+            {typeof marketing?.introducing === "string"
+              ? marketing?.introducing
+              : "Introducing Saasfly"}
           </DocumentGuide>
         </Link>
       </div>
@@ -44,7 +58,7 @@ export function MainNav({ items, children, params: { lang }, marketing }: MainNa
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
-        {showMobileMenu ? <Icons.Close/> : <Icons.Logo/>}
+        {showMobileMenu ? <Icons.Close /> : <Icons.Logo />}
         <span className="font-bold">Menu</span>
       </button>
       {showMobileMenu && items && (
