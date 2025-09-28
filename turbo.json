@@ -9,6 +9,10 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
     },
+    "build:ci": {
+      "dependsOn": ["^build:ci"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
@@ -18,6 +22,10 @@
       "outputMode": "new-only"
     },
     "lint": {
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/.eslintcache"]
+    },
+    "lint:ci": {
       "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"]
     },

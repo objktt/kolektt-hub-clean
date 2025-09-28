@@ -36,9 +36,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Copy env
+      - name: Copy CI env
         shell: bash
-        run: cp .env.example .env.local
+        run: cp .env.ci .env.local
 
       - name: Setup bun
         uses: oven-sh/setup-bun@v1
@@ -47,7 +47,7 @@ jobs:
         run: bun i
 
       - name: Build
-        run: bun run build
+        run: bun run build:ci
         env:
           # The hostname used to communicate with the PostgreSQL service container
           POSTGRES_HOST: postgres
@@ -62,7 +62,7 @@ jobs:
 
 
       - name: lint and type-check
-        run: bun run lint && bun run format && bun run typecheck
+        run: bun run lint:ci && bun run format && bun run typecheck
         env:
           # Database
           POSTGRES_HOST: postgres
