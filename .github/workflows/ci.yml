@@ -57,30 +57,8 @@ jobs:
           POSTGRES_PASSWORD: default
           POSTGRES_DB: verceldb
           POSTGRES_URL: postgres://default:default@localhost:5432/verceldb
-          # Required for build
+          # Required for build - minimal setup for marketing pages
           NEXT_PUBLIC_APP_URL: 'http://localhost:3000'
-          NEXTAUTH_URL: 'http://localhost:3000'
-          NEXTAUTH_SECRET: 'test-secret-for-ci'
-          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: 'pk_test_test'
-          CLERK_SECRET_KEY: 'sk_test_test'
-          GITHUB_CLIENT_ID: 'test_github_client_id'
-          GITHUB_CLIENT_SECRET: 'test_github_client_secret'
-          RESEND_API_KEY: 'test'
-          RESEND_FROM: 'test@example.com'
-          STRIPE_API_KEY: 'sk_test_test'
-          STRIPE_WEBHOOK_SECRET: 'whsec_test'
-          NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID: 'prod_test'
-          NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_PRO_PRODUCT_ID: 'prod_test'
-          NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_PRO_YEARLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_BUSINESS_PRODUCT_ID: 'prod_test'
-          NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_POSTHOG_KEY: 'test'
-          NEXT_PUBLIC_POSTHOG_HOST: 'https://app.posthog.com'
-          ADMIN_EMAIL: 'admin@test.com'
-          IS_DEBUG: 'false'
 
 
       - name: lint and type-check
@@ -93,27 +71,5 @@ jobs:
           POSTGRES_PASSWORD: default
           POSTGRES_DB: verceldb
           POSTGRES_URL: postgres://default:default@localhost:5432/verceldb
-          # Required for type-checking
+          # Required for type-checking - minimal setup for marketing pages
           NEXT_PUBLIC_APP_URL: 'http://localhost:3000'
-          NEXTAUTH_URL: 'http://localhost:3000'
-          NEXTAUTH_SECRET: 'test-secret-for-ci'
-          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: 'pk_test_test'
-          CLERK_SECRET_KEY: 'sk_test_test'
-          GITHUB_CLIENT_ID: 'test_github_client_id'
-          GITHUB_CLIENT_SECRET: 'test_github_client_secret'
-          RESEND_API_KEY: 'test'
-          RESEND_FROM: 'test@example.com'
-          STRIPE_API_KEY: 'sk_test_test'
-          STRIPE_WEBHOOK_SECRET: 'whsec_test'
-          NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID: 'prod_test'
-          NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_PRO_PRODUCT_ID: 'prod_test'
-          NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_PRO_YEARLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_BUSINESS_PRODUCT_ID: 'prod_test'
-          NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PRICE_ID: 'price_test'
-          NEXT_PUBLIC_POSTHOG_KEY: 'test'
-          NEXT_PUBLIC_POSTHOG_HOST: 'https://app.posthog.com'
-          ADMIN_EMAIL: 'admin@test.com'
-          IS_DEBUG: 'false'
