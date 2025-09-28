@@ -11,9 +11,30 @@ import { callProcedure } from "@trpc/server";
 import { TRPCErrorResponse } from "@trpc/server/rpc";
 import { cache } from "react";
 import { appRouter } from "../../../../packages/api/src/root";
-import { auth } from "@clerk/nextjs/server";
+// Conditional Clerk usage
+const isDev = process.env.NODE_ENV === 'development' || process.env.IS_DEBUG === 'true';
+const hasValidClerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== '1' && 
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith('pk_');
 
-type AuthObject = Awaited<ReturnType<typeof auth>>;
+// Mock auth function for development or invalid Clerk keys
+const mockAuth = () => Promise.resolve({ userId: null });
+
+// Conditionally import and use Clerk auth
+let auth: any;
+try {
+  if (!isDev && hasValidClerkKey) {
+    const { auth: clerkAuth } = require("@clerk/nextjs/server");
+    auth = clerkAuth;
+  } else {
+    auth = mockAuth;
+  }
+} catch (error) {
+  // Fallback to mock auth if Clerk import fails
+  auth = mockAuth;
+}
+
+type AuthObject = { userId: string | null };
 
 export const createTRPCContext = async (opts: {
   headers: Headers;

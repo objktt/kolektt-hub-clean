@@ -87,12 +87,16 @@ export const metadata = {
   // manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
-// 개발 모드 체크
+// 개발 모드 체크 및 유효한 Clerk 키 체크
 const isDev = process.env.NODE_ENV === 'development' || process.env.IS_DEBUG === 'true';
+const hasValidClerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== '1' && 
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith('pk_');
 
 // Clerk Provider Wrapper 컴포넌트
 const ConditionalClerkProvider = ({ children }: { children: React.ReactNode }) => {
-  if (isDev) {
+  // 개발 모드이거나 유효하지 않은 Clerk 키인 경우 Clerk을 사용하지 않음
+  if (isDev || !hasValidClerkKey) {
     return <>{children}</>;
   }
   return <ClerkProvider>{children}</ClerkProvider>;

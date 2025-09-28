@@ -44,10 +44,13 @@ export function isNoNeedProcess(request: NextRequest): boolean {
 
 // 개발 모드에서는 Clerk을 비활성화
 const isDev = process.env.NODE_ENV === 'development' || process.env.IS_DEBUG === 'true';
+const hasValidClerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && 
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY !== '1' && 
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.startsWith('pk_');
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-export const middleware = isDev ? 
+export const middleware = (isDev || !hasValidClerkKey) ?
   async (req: NextRequest) => {
     // 개발 모드에서는 단순히 i18n 리다이렉션만 처리
     if (isNoNeedProcess(req)) {
