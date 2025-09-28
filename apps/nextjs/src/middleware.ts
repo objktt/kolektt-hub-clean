@@ -1,7 +1,11 @@
-import { middleware } from "./utils/clerk";
+// Empty middleware for marketing-only site
+// Authentication middleware disabled
 
 export const config = {
-  matcher: ["/((?!_next|videos|3d).*)", "/", "/(api|trpc)(.*)"],
+  matcher: []
 };
 
-export default middleware;
+export default function middleware() {
+  // No-op middleware for marketing site
+  return;
+}

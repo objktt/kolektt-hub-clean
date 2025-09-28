@@ -1,21 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import Script from "next/script";
 import type { Locale } from "~/config/i18n-config";
-import ShutterButton from "~/components/ShutterButton";
 // import Particles from '~/components/Particles';
 import { Iphone15Pro } from "~/components/ui/iphone-15-pro";
 import Testimonials from "~/components/ui/testimonials";
 import KolekttPricing from "~/components/ui/kolektt-pricing";
 import { CollectionBento } from "~/components/ui/collection-bento";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@saasfly/ui/accordion";
 import { motion } from "framer-motion";
 import {
   Camera,
@@ -955,61 +947,41 @@ export default function IndexPage({
                     </h2>
                   </div>
 
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="mb-10"
-                    defaultValue="item-1"
-                  >
-                    <AccordionItem
-                      value="item-1"
-                      className="border-b border-gray-200"
-                    >
-                      <AccordionTrigger className="text-left py-4 font-semibold text-gray-800 text-xl hover:text-gray-900 hover:underline [&[data-state=open]>svg]:rotate-180">
+                  <div className="mb-10 space-y-6">
+                    <div className="border-b border-gray-200 pb-6">
+                      <h3 className="text-left py-4 font-semibold text-gray-800 text-xl">
                         Smart Recognition Engine
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-4 pt-0">
-                        <p className="text-xl text-gray-700 m-0">
-                          Computer vision and ML instantly identify album covers
-                          via camera, automatically matching artist, release
-                          year, tracklist, and pressing info with 95%+ accuracy,
-                          including rare editions.
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem
-                      value="item-2"
-                      className="border-b border-gray-200"
-                    >
-                      <AccordionTrigger className="text-left py-4 font-semibold text-gray-800 text-xl hover:text-gray-900 hover:underline [&[data-state=open]>svg]:rotate-180">
+                      </h3>
+                      <p className="text-xl text-gray-700 m-0">
+                        Computer vision and ML instantly identify album covers
+                        via camera, automatically matching artist, release
+                        year, tracklist, and pressing info with 95%+ accuracy,
+                        including rare editions.
+                      </p>
+                    </div>
+                    <div className="border-b border-gray-200 pb-6">
+                      <h3 className="text-left py-4 font-semibold text-gray-800 text-xl">
                         Metadata Collection System
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-4 pt-0">
-                        <p className="text-xl text-gray-700 m-0">
-                          Continuously collects record data through user
-                          behaviors - registration, ratings, trading. Real-time
-                          updates on condition, quality, rarity, and market
-                          prices build the world's most accurate vinyl database.
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem
-                      value="item-3"
-                      className="border-b border-gray-200"
-                    >
-                      <AccordionTrigger className="text-left py-4 font-semibold text-gray-800 text-xl hover:text-gray-900 hover:underline [&[data-state=open]>svg]:rotate-180">
+                      </h3>
+                      <p className="text-xl text-gray-700 m-0">
+                        Continuously collects record data through user
+                        behaviors - registration, ratings, trading. Real-time
+                        updates on condition, quality, rarity, and market
+                        prices build the world's most accurate vinyl database.
+                      </p>
+                    </div>
+                    <div className="border-b border-gray-200 pb-6">
+                      <h3 className="text-left py-4 font-semibold text-gray-800 text-xl">
                         AI Investment Advisor
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-4 pt-0">
-                        <p className="text-xl text-gray-700 m-0">
-                          Analyzes your collection patterns to recommend
-                          investment-worthy records. Considers market trends,
-                          price volatility, and rarity to grow asset value. Beta
-                          users saw 23% collection value increase in 6 months.
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
+                      </h3>
+                      <p className="text-xl text-gray-700 m-0">
+                        Analyzes your collection patterns to recommend
+                        investment-worthy records. Considers market trends,
+                        price volatility, and rarity to grow asset value. Beta
+                        users saw 23% collection value increase in 6 months.
+                      </p>
+                    </div>
+                  </div>
                   <Link
                     href="#"
                     className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold"

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import type { Locale } from "~/config/i18n-config";
 import { Metadata } from "next";
 
@@ -9,7 +8,7 @@ export const metadata: Metadata = {
     "Enterprise-grade inventory system for record shops and large-scale dealers. Streamline operations with automated cataloging, real-time pricing, and advanced analytics.",
 };
 
-export default async function HubPage({
+export default function HubPage({
   params: { lang },
 }: {
   params: {

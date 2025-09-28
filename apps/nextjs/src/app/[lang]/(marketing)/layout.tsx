@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Script from "next/script";
 import type { Locale } from "~/config/i18n-config";
 import { ShadcnHeader } from "~/components/shadcn-header";

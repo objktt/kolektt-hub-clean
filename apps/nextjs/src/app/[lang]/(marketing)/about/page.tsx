@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { MinimalistHero } from "@saasfly/ui/minimalist-hero";
-import { MinimalistHeroRight } from "@saasfly/ui/minimalist-hero-right";
-import { ShapeConnectAnimation } from "@saasfly/ui/shape-connect-animation";
-import { ImageSection } from "@saasfly/ui/image-section";
+import { MinimalistHero, MinimalistHeroRight, ShapeConnectAnimation } from "@saasfly/ui";
 import type { Locale } from "~/config/i18n-config";
 
 export default function AboutPage({

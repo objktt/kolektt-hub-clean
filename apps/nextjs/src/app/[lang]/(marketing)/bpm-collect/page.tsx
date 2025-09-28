@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import type { Locale } from "~/config/i18n-config";
 import { Iphone15Pro } from "~/components/ui/iphone-15-pro";
 import BPMCalculator from "~/components/BPMCalculator";
@@ -13,11 +12,6 @@ import {
   MagnifyingGlass,
   ChartBar,
   Watch,
-  Play,
-  Lightning,
-  SpotifyLogo,
-  Record,
-  CheckCircle,
 } from "phosphor-react";
 
 export default function BpmCollectPage({
