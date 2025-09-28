@@ -2,7 +2,7 @@ import { middleware } from "./utils/clerk";
 
 export const config = {
   matcher: [
-    "/((?!_next|videos).*)",
+    "/((?!_next|videos|3d).*)",
     "/",
     "/(api|trpc)(.*)"
   ],

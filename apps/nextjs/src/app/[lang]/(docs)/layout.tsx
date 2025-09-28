@@ -2,6 +2,9 @@ import { Suspense } from "react";
 
 import { getCurrentUser } from "@saasfly/auth";
 
+// Force dynamic rendering to avoid Clerk issues during build
+export const dynamic = 'force-dynamic';
+
 import { NavBar } from "~/components/navbar";
 import { SiteFooter } from "~/components/site-footer";
 import type { Locale } from "~/config/i18n-config";

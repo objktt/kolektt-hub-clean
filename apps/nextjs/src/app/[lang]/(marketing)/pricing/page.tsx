@@ -10,6 +10,9 @@ export const metadata = {
   title: "Pricing",
 };
 
+// Force dynamic rendering due to user authentication check
+export const dynamic = 'force-dynamic';
+
 export default async function PricingPage({
   params: { lang },
 }: {

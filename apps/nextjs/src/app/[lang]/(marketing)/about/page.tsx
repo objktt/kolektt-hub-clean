@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { MinimalistHero } from '@saasfly/ui/minimalist-hero';
@@ -6,31 +8,36 @@ import { ShapeConnectAnimation } from '@saasfly/ui/shape-connect-animation';
 import { ImageSection } from '@saasfly/ui/image-section';
 import type { Locale } from "~/config/i18n-config";
 
-export default async function AboutPage({
+export default function AboutPage({
   params: { lang },
 }: {
   params: {
     lang: Locale;
   };
 }) {
+
   return (
-    <div className="bg-black text-white">
+    <div className="relative bg-black text-white">
       {/* MinimalistHero Section */}
-      <MinimalistHero
-        mainText="In a world increasingly shaped by AI, we seek to restore balance. Technology should not only accelerate speed but also deepen meaning, and we design to bring humanity back to the forefront."
-        overlayText={{
-          part1: 'Between Taste,',
-          part2: 'Humanity, & Beyond'
-        }}
-        leftImage="/images/media/01.png"
-        className="bg-black text-white"
-      />
+      <div className="relative z-20 mb-40">
+        <MinimalistHero
+          mainText="In a world increasingly shaped by AI, we seek to restore balance. Technology should not only accelerate speed but also deepen meaning, and we design to bring humanity back to the forefront."
+          overlayText={{
+            part1: 'Between Taste,',
+            part2: 'Humanity, & Beyond'
+          }}
+          leftImage="/images/media/01.png"
+          className="bg-black text-white"
+        />
+      </div>
 
       {/* Shape Connect Animation */}
-      <ShapeConnectAnimation />
+      <div className="relative z-20">
+        <ShapeConnectAnimation />
+      </div>
 
       {/* Our Philosophy */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <section className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-center text-white">Our Philosophy</h2>
         <div className="prose prose-lg mx-auto text-center">
           <p className="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
@@ -47,18 +54,25 @@ export default async function AboutPage({
       </section>
 
       {/* Why the "t" section */}
-      <MinimalistHeroRight
-        mainText="The final 't' in Kolektt and Objktt represents time. It signifies that what we create is not a fixed object, but a subject that unfolds and evolves across moments. Kolektt reflects how a collector's taste grows over time, while Objktt represents a studio that approaches every problem with awareness of time and context."
-        overlayText={{
-          part1: 'Why the "t"',
-          part2: 'in Kolektt / Objktt'
-        }}
-        rightImage="/images/media/02.png"
-        className="bg-black text-white"
-      />
+      <div className="relative z-20">
+        <MinimalistHeroRight
+          mainText="The final 't' in Kolektt and Objktt represents time. It signifies that what we create is not a fixed object, but a subject that unfolds and evolves across moments. Kolektt reflects how a collector's taste grows over time, while Objktt represents a studio that approaches every problem with awareness of time and context."
+          overlayText={{
+            part1: 'Why the "t"',
+            part2: 'in Kolektt / Objktt'
+          }}
+          rightImage="/images/media/02.png"
+          className="bg-black text-white"
+        />
+      </div>
+
+      {/* Shape Connect Animation */}
+      <div className="relative z-20">
+        <ShapeConnectAnimation />
+      </div>
 
       {/* Our Vision */}
-      <section className="py-20 lg:py-28">
+      <section className="relative z-20 py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-white">Our Vision</h2>
           <div className="prose prose-lg mx-auto">
@@ -76,11 +90,22 @@ export default async function AboutPage({
         </div>
       </section>
 
-      {/* The Kolektt Ecosystem */}
-      <section className="bg-black py-20 lg:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* The Ecosystem */}
+      <section className="relative z-20 bg-black py-32 lg:py-40 pb-48 lg:pb-56 overflow-hidden min-h-[800px]">
+        {/* Background Image */}
+        <div className="absolute left-4 top-4 w-[403px] h-[403px] md:w-[484px] md:h-[484px] lg:w-[605px] lg:h-[605px] xl:w-[806px] xl:h-[806px] opacity-70 z-0 md:left-[100px] md:top-[50px]">
+          <Image
+            src="/images/media/03.png"
+            alt="The Ecosystem"
+            fill
+            className="object-contain filter grayscale hover:opacity-90 transition-opacity duration-300"
+            priority={false}
+          />
+        </div>
+        
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">The Kolektt Ecosystem</h2>
+            <h2 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold mb-4 text-white leading-tight">The Ecosystem</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               The philosophy of Objktt Studio comes to life through Kolektt, 
               a platform designed to grow and change naturally over time.
@@ -88,7 +113,7 @@ export default async function AboutPage({
           </div>
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {/* Kolektt App Card */}
-            <div className="bg-gray-800 rounded-3xl p-8 hover:bg-gray-750 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 border border-gray-700">
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 border border-white/20">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <span className="text-2xl">📱</span>
               </div>
@@ -107,7 +132,7 @@ export default async function AboutPage({
             </div>
 
             {/* BPM Collect Card */}
-            <div className="bg-gray-800 rounded-3xl p-8 hover:bg-gray-750 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 border border-gray-700">
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20 border border-white/20">
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
                 <span className="text-2xl">🎵</span>
               </div>
@@ -126,7 +151,7 @@ export default async function AboutPage({
             </div>
 
             {/* Kolektt Hub Card */}
-            <div className="bg-gray-800 rounded-3xl p-8 hover:bg-gray-750 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 border border-gray-700">
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 border border-white/20">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
                 <span className="text-2xl">🏪</span>
               </div>
@@ -147,17 +172,22 @@ export default async function AboutPage({
         </div>
       </section>
 
+      {/* Shape Connect Animation */}
+      <div className="relative z-20">
+        <ShapeConnectAnimation />
+      </div>
+
       {/* About Objktt Studio */}
-      <section className="py-20 lg:py-28">
+      <section className="relative z-20 py-20 lg:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-gray-900">About Objktt Studio</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-white">About Objktt Studio</h2>
           <div className="prose prose-lg mx-auto">
-            <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-6">
+            <p className="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
               Objktt Studio is a collective of designers, developers, and music lovers 
               dedicated to solving problems by returning to their essence, 
               while pacing every solution with sensitivity to context and growth.
             </p>
-            <p className="text-lg md:text-xl leading-relaxed text-gray-700">
+            <p className="text-lg md:text-xl leading-relaxed text-gray-300">
               We merge design, technology, and music to create products that are 
               functional, soulful, and lasting. 
               Rather than chasing fleeting trends or blind automation, 
@@ -168,28 +198,30 @@ export default async function AboutPage({
         </div>
       </section>
 
-      {/* Enter the Timeline - CTA */}
-      <section className="bg-black text-white text-center py-20 lg:py-28">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Enter the Timeline
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
-            Join a community that values music, humanity, and meaningful creation.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              href={`/${lang}`} 
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition-all duration-200"
-            >
-              Explore Kolektt App
-            </Link>
-            <Link 
-              href={`/${lang}/hub`} 
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-xl hover:bg-white hover:text-black transition-all duration-200"
-            >
-              Enter Kolektt Hub
-            </Link>
+      {/* Join Our Team - Recruiting */}
+      <section className="relative z-20 bg-black text-white py-20 lg:py-28">
+        <div className="w-[90%] mx-auto">
+          <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 lg:p-12 border border-white/10 text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              Join Our Team
+            </h2>
+            <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-4xl mx-auto">
+              We're looking for passionate individuals who share our vision of creating meaningful products that bridge music, technology, and humanity.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a 
+                href="mailto:hello@kolektt.kr?subject=Job Application - Objktt Studio"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-lg font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition-all duration-200"
+              >
+                hello@kolektt.kr
+              </a>
+              <Link 
+                href={`/${lang}`} 
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-xl hover:bg-white hover:text-black transition-all duration-200"
+              >
+                Explore Kolektt
+              </Link>
+            </div>
           </div>
         </div>
       </section>

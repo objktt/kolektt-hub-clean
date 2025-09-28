@@ -5,6 +5,7 @@ import type { Locale } from "~/config/i18n-config";
 import { Iphone15Pro } from "~/components/ui/iphone-15-pro";
 import BPMCalculator from "~/components/BPMCalculator";
 import UltraSimpleSelector from "~/components/UltraSimpleSelector";
+// import ParticleBackground from "~/components/ui/particle-background";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
@@ -46,8 +47,11 @@ export default function BpmCollectPage({
 
   return (
     <>
+      {/* Particle Background */}
+      {/* <ParticleBackground /> */}
+      
       {/* Hero & Demo Container */}
-      <div id="hero-demo-container" className="relative">
+      <div id="hero-demo-container" className="relative pt-20 z-10">
         <div id="ball" className="absolute w-5 h-5 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full z-10 shadow-lg shadow-purple-500/40"></div>
         <div id="square" className="absolute w-[18px] h-[18px] bg-gradient-to-br from-orange-500 to-pink-600 z-10 shadow-lg shadow-orange-500/40"></div>
         
@@ -55,51 +59,42 @@ export default function BpmCollectPage({
         <div id="hero" className="px-[5%] z-10 relative">
           <div className="bg-white relative rounded-[40px] overflow-hidden min-h-[600px] flex items-center">
             <div id="hero-three" className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
-            <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
               <div className="flex flex-col lg:flex-row items-center">
                 <div className="w-full lg:w-1/2">
                   <div className="lg:pr-12">
-                    <div className="mb-8 text-left">
+                    <div className="mb-8 text-center lg:text-left">
                       <h1 className="text-5xl lg:text-6xl xl:text-9xl font-bold text-gray-900 mb-4">
                         BPM Collect
                       </h1>
                       <p className="text-xl md:text-2xl text-gray-700 mb-10">
                         Measure BPM with intuitive animations, search Discogs integration, and create perfect setlists with genre-based classification. From pro DJs to music enthusiasts.
                       </p>
-                      <div className="flex justify-start gap-3 mt-4">
+                      <div className="flex flex-col md:flex-row justify-center lg:justify-start items-center lg:items-start gap-5 mt-4">
                         <button type="button"
-                          className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-lg tracking-wider border-none outline-none bg-black hover:bg-gray-800 active:bg-black">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="32px" fill="#fff" className="inline mr-2" viewBox="0 0 22.773 22.773">
+                          className="flex items-center text-white bg-black hover:bg-gray-800 transition-colors px-6 py-4 rounded-lg border-none min-w-[200px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32px" fill="#fff" className="mr-3" viewBox="0 0 22.773 22.773">
                             <path
                               d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"
                               data-original="#000000" />
                           </svg>
-                          <div className="leading-tight">
-                            <p className="text-xs text-white leading-tight text-left font-medium mb-0">Download on the</p>
-                            <span className="text-sm font-semibold">App Store</span>
+                          <div className="text-left">
+                            <p className="mb-1 text-xs text-white leading-tight">Download on the</p>
+                            <span className="text-lg font-semibold text-white">App Store</span>
                           </div>
                         </button>
 
                         <button type="button"
-                          className="px-4 py-2 cursor-pointer inline-flex items-center rounded-lg text-white text-lg tracking-wider border-none outline-none bg-black hover:bg-gray-800 active:bg-black">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="32px" fill="#fff" className="inline mr-2" viewBox="0 0 64 64">
+                          className="flex items-center text-white bg-black hover:bg-gray-800 transition-colors px-6 py-4 rounded-lg border-none min-w-[200px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32px" fill="#fff" className="mr-3" viewBox="0 0 64 64">
                             <path fill="#57cef3" d="M7 3v58l33-29z" data-original="#57cef3" />
                             <path fill="#fff200" d="m36 32 8-10 15 10-15 10z" data-original="#fff200" />
                             <path fill="#48ff48" d="M36 32 7 3h4l34 20z" data-original="#48ff48" />
                             <path fill="#ff6c58" d="M36 32 7 61h4l34-20z" data-original="#ff6c58" />
-                            <path fill="#f33"
-                              d="M9.1 64c-1.9 0-3.6-1-4.5-2.6L8 58.2v.7c0 .3.1.6.3.8L24 44c7.4 0 14.1-1.2 18.3-3.1l5.8-3.4v4.6L11.7 63.3c-.7.5-1.6.7-2.6.7z"
-                              data-original="#ff3333" />
-                            <path fill="#0779e4"
-                              d="M9.1 4C8.5 4 8 4.5 8 5.1V36c0 4.4 7.2 8 16 8L5.5 62.5c-.9-.9-1.5-2.2-1.5-3.6V5.1C4 2.3 6.3 0 9.1 0z"
-                              data-original="#0779e4" />
-                            <path fill="#314a52"
-                              d="M8.3 4.3c.2-.2.5-.3.8-.3.2 0 .4.1.6.2l45.5 26.6c.5.2.8.7.8 1.2s-.3 1-.7 1.3l-11.4 6.6 2.9 2.9 10.4-6.1c1.7-1 2.7-2.8 2.7-4.7s-1-3.8-2.7-4.7L11.7.7C11 .2 10.1 0 9.1 0 7.7 0 6.4.6 5.5 1.5z"
-                              data-original="#314a52" />
                           </svg>
-                          <div className="leading-tight">
-                            <p className="text-xs text-white leading-tight text-left font-medium mb-0">Get it on</p>
-                            <span className="text-sm font-semibold">Google Play</span>
+                          <div className="text-left">
+                            <p className="mb-1 text-xs text-white leading-tight">Get it on</p>
+                            <span className="text-lg font-semibold text-white">Google Play</span>
                           </div>
                         </button>
                       </div>
@@ -124,7 +119,7 @@ export default function BpmCollectPage({
             <div className="mx-auto w-4/5 px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col lg:flex-row items-center">
                 <div className="w-full lg:w-1/2">
-                  <div className="lg:pr-12">
+                  <div className="lg:pr-12 text-center lg:text-left">
                     <div className="mb-8">
                       <h2 className="text-5xl lg:text-6xl xl:text-9xl font-bold text-white mb-4">What is BPM Collect</h2>
                     </div>
@@ -453,7 +448,7 @@ export default function BpmCollectPage({
                 </motion.div>
                 
                 <motion.div
-                  className="flex flex-col sm:flex-row gap-4 items-center justify-center"
+                  className="flex flex-col md:flex-row gap-5 items-center justify-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -464,16 +459,16 @@ export default function BpmCollectPage({
                     href="https://apps.apple.com/app/bpm-collect"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="flex items-center text-white bg-black hover:bg-gray-800 transition-colors px-6 py-4 rounded-lg border-none min-w-[200px]"
                   >
-                    <img 
-                      src="/images/icon/apple.svg" 
-                      alt="Apple Logo" 
-                      className="w-6 h-6 filter invert"
-                    />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" fill="#fff" className="mr-3" viewBox="0 0 22.773 22.773">
+                      <path
+                        d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"
+                        data-original="#000000" />
+                    </svg>
                     <div className="text-left">
-                      <div className="text-xs text-gray-300">Download on the</div>
-                      <div className="text-lg font-semibold leading-none">App Store</div>
+                      <p className="mb-1 text-xs text-white leading-tight">Download on the</p>
+                      <span className="text-lg font-semibold text-white">App Store</span>
                     </div>
                   </a>
 
@@ -482,16 +477,17 @@ export default function BpmCollectPage({
                     href="https://play.google.com/store/apps/details?id=com.kolektt.bpmcollect"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 px-6 py-3 bg-black hover:bg-gray-800 text-white rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="flex items-center text-white bg-black hover:bg-gray-800 transition-colors px-6 py-4 rounded-lg border-none min-w-[200px]"
                   >
-                    <img 
-                      src="/images/icon/playstore.svg" 
-                      alt="Google Play Logo" 
-                      className="w-6 h-6"
-                    />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" fill="#fff" className="mr-3" viewBox="0 0 64 64">
+                      <path fill="#57cef3" d="M7 3v58l33-29z" data-original="#57cef3" />
+                      <path fill="#fff200" d="m36 32 8-10 15 10-15 10z" data-original="#fff200" />
+                      <path fill="#48ff48" d="M36 32 7 3h4l34 20z" data-original="#48ff48" />
+                      <path fill="#ff6c58" d="M36 32 7 61h4l34-20z" data-original="#ff6c58" />
+                    </svg>
                     <div className="text-left">
-                      <div className="text-xs text-gray-300">Get it on</div>
-                      <div className="text-lg font-semibold leading-none">Google Play</div>
+                      <p className="mb-1 text-xs text-white leading-tight">Get it on</p>
+                      <span className="text-lg font-semibold text-white">Google Play</span>
                     </div>
                   </a>
                 </motion.div>

@@ -11,6 +11,9 @@ export const metadata = {
   description: "Manage account and website settings.",
 };
 
+// Force dynamic rendering for authenticated pages
+export const dynamic = 'force-dynamic';
+
 export default async function SettingsPage() {
   const user = await getCurrentUser();
   if (!user) {

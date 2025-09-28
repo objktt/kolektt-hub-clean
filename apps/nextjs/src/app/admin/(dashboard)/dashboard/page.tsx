@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@saasfly/ui/avatar";
+
+// Force dynamic rendering for admin pages
+export const dynamic = 'force-dynamic';
 import { Button } from "@saasfly/ui/button";
 import {
   Card,

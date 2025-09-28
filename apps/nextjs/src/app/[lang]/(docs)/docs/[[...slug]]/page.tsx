@@ -13,6 +13,9 @@ import "~/styles/mdx.css";
 
 import type { Metadata } from "next";
 
+// Force dynamic rendering to avoid Clerk issues during build
+export const dynamic = 'force-dynamic';
+
 import { env } from "~/env.mjs";
 import { absoluteUrl } from "~/lib/utils";
 

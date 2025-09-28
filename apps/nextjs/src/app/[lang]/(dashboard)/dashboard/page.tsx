@@ -24,6 +24,9 @@ export const metadata = {
   title: "Dashboard",
 };
 
+// Force dynamic rendering for authenticated pages
+export const dynamic = 'force-dynamic';
+
 // export type ClusterType = RouterOutputs["k8s"]["getClusters"][number];
 export default async function DashboardPage({
   params: { lang },

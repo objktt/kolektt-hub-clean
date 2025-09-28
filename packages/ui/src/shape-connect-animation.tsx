@@ -4,15 +4,19 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const ShapeConnectAnimation = () => {
-  const { scrollYProgress } = useScroll();
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.8", "end 0.2"]
+  });
   
   // 스크롤 진행도에 따라 도형들의 위치를 변환
-  const circleX = useTransform(scrollYProgress, [0, 0.3], [-200, 0]);
-  const squareX = useTransform(scrollYProgress, [0, 0.3], [200, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [0.3, 1]);
+  const circleX = useTransform(scrollYProgress, [0, 1], [-200, 0]);
+  const squareX = useTransform(scrollYProgress, [0, 1], [200, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0.3, 1]);
   
   return (
-    <section className="relative bg-black py-20 lg:py-32 overflow-hidden -mt-[150px]">
+    <section ref={ref} className="relative bg-black py-20 lg:py-32 overflow-hidden -mt-[150px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center h-64 relative">
           
@@ -46,25 +50,6 @@ export const ShapeConnectAnimation = () => {
             <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 bg-gradient-to-br from-orange-500 to-pink-600 rounded-2xl shadow-2xl shadow-orange-500/25 transform rotate-12" />
           </motion.div>
 
-          {/* 연결선 - 스크롤에 따라 나타남 */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            style={{
-              scaleX: useTransform(scrollYProgress, [0.1, 0.3], [0, 1]),
-              opacity: useTransform(scrollYProgress, [0.15, 0.3], [0, 1])
-            }}
-            className="absolute w-96 h-1 bg-gradient-to-r from-blue-500 via-white to-orange-500 transform-gpu origin-center z-0"
-          />
-
-          {/* 중앙 연결점 */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            style={{
-              scale: useTransform(scrollYProgress, [0.2, 0.4], [0, 1]),
-              opacity: useTransform(scrollYProgress, [0.25, 0.4], [0, 1])
-            }}
-            className="absolute w-6 h-6 bg-white rounded-full z-20 shadow-lg"
-          />
 
           {/* 배경 파티클 효과 */}
           <motion.div
